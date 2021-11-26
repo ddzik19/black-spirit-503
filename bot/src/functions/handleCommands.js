@@ -1,3 +1,4 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
 const {
     REST
 } = require('@discordjs/rest');
@@ -14,7 +15,7 @@ module.exports = (client) => {
         for (folder of commandFolders) {
             const commandFiles = fs.readdirSync(`${path}/${folder}`).filter(file => file.endsWith('.js'));
             for (const file of commandFiles) {
-                const command = require(`../commands/${folder}/${file}`);
+                const command = require(`./commands/${folder}/${file}`);
                 // set a new item in the collection
                 // with the key as the command name and the value as the exported module
                 client.commands.set(command.data.name, command);
@@ -30,7 +31,7 @@ module.exports = (client) => {
                 console.log('Started refreshing application (/) commands.');
 
                 await rest.put(
-                    Routes.applicationGuildCommands(clientId, guildId), {
+                    Routes.applicationCommands(clientId), {
                         body: client.commandArray
                     },
                 );

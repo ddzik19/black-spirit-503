@@ -1,13 +1,14 @@
 {
-  "name": "bot",
+  "name": "Cooking bot",
   "version": "1.0.0",
   "description": "",
   "main": "bot.js",
   "scripts": {
     "test": "mocha bot.js"
+
   },
   "keywords": [],
-  "author": "",
+  "author": "Damian Dzik",
   "license": "ISC",
   "dependencies": {
     "@discordjs/builders": "^0.8.2",

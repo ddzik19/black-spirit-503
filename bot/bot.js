@@ -24,23 +24,22 @@ client.on("ready", () => {
 const prefix = "!";
 client.on("message", msg => {
     // array of arguments, used for different kinds of functions
-    const args = msg.content.slice(prefix.length).trim().split(/ +/g);
+    const args = [].msg.content.trim().split(' ');
     const command = args.shift().toLowerCase();
-
+    
     // if the bot is the message author then return
     if (msg.author.bot) return
 
-    if (command === "!ping") {
+    if (msg.content === "!ping") {
         msg.channel.send("pong")
     }
-    if (command === "recipe") {
-        // do ping function here
 
-        //msg.channel.send(`Recipe: ${args[0]}, ${args[1]}`);
-        client.commands.get(command).execute(command, args, Discord);
+    if (command === "!recipe") {
+        msg.channel.send(`Recipe: ${args[0]}, ${args[1]}`);
+        //client.commands.get(command).execute(command, args, Discord);
     }
 
-    // if the user wants to search recipes that contain
+    // if the user wants to search commands that contain
     // a certain ingredient
     // if (msg.content === "!ingredient") {
     //     // and what ingredient to search

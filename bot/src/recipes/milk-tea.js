@@ -1,12 +1,11 @@
 const name = "milk-tea";
 module.exports = {
-    name: name,
-    description: 'Milk Tea recipe, typically used for Imperial Cooking Boxes.',
-    execute(msg, args, Discord) {
+    name: "milk-tea",
+    execute(msg, args) {
         const newEmbed = new Discord.MessageEmbed()
             .setColor('#304281')
             .setTitle('Milk Tea')
-            .setDescription('the official bdo database milk tea description here <===')
+            .setDescription('Milk Tea recipe, typically used for Imperial Cooking Boxes.')
             .addFields({
                 name: 'Milk',
                 value: 3
@@ -23,5 +22,4 @@ module.exports = {
         msg.channel.send(newEmbed);
         System.out.println(name);
     }
-
 }

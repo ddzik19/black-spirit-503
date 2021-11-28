@@ -22,46 +22,21 @@ client.on("ready", () => {
 })
 
 const prefix = "!";
-client.on("message", msg => {
+client.on("messageCreate", msg => {
     // array of arguments, used for different kinds of functions
     const args = msg.content.trim().split(' ');
-    const command = args.shift().toLowerCase();
+    const command = args[0].toLowerCase();
     // if the bot is the message author then return
-    if (msg.author.bot) return
+    if (msg.author.bot || !msg.content.startsWith(prefix)) return
 
     if (msg.content === "!ping") {
         msg.channel.send("pong")
-        console.log(msg.content)
     }
 
     if (command === "!recipe") {
-        msg.channel.send(`Recipe: ${args[0]}, ${args[1]}`);
-        //client.commands.get(command).execute(command, args, Discord);
-        console.log("im here in recipe command!")
+        //msg.channel.send(`Recipe: ${args[1]}`);
+        client.commands.get(args[1]).execute(msg, args[2]);
     }
-
-    // if the user wants to search commands that contain
-    // a certain ingredient
-    // if (msg.content === "!ingredient") {
-    //     // and what ingredient to search
-
-    // }
-
-    /* 
-    use a loop to get all the commands on start
-    then if user typed in a message then get the text of the message
-    compare it to a name of a function
-    if name matches then use the method in the corresponding script
-
-
-    const commands = new Collection();
-    cost command = fs.readdirSync(`./src/commands/${file}`)
-        if (msg.content == command.name) {
-            // do ping function here
-            msg.channel.send("pong")
-        }
-    
-    */
 })
 
 client.login(process.env.TOKEN)

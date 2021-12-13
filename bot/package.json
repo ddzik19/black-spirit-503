@@ -5,7 +5,6 @@
   "main": "bot.js",
   "scripts": {
     "test": "mocha bot.js"
-
   },
   "keywords": [],
   "author": "Damian Dzik",

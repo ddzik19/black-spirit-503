@@ -7,12 +7,12 @@ const client = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
 });
 const fs = require('fs');
-client.commands = new Discord.Collection();
+client.recipes = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./src/recipes').filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
     const command = require(`./src/recipes/${file}`)
-    client.commands.set(command.name, command);
+    client.recipes.set(command.name, command);
 }
 const dotenv = require("dotenv");
 dotenv.config();
@@ -29,13 +29,15 @@ client.on("messageCreate", msg => {
     // if the bot is the message author then return
     if (msg.author.bot || !msg.content.startsWith(prefix)) return
 
-    if (msg.content === "!ping") {
+    if (command === "!ping") {
         msg.channel.send("pong")
     }
 
     if (command === "!recipe") {
-        //msg.channel.send(`Recipe: ${args[1]}`);
-        client.commands.get(args[1]).execute(msg, args[2]);
+        // commands.get is responsible for getting the correct js file
+        // args[1] is the name of the js file that we are getting from recipes
+        // args[2] is the quantity of recipes to produce 
+        client.recipes.get(args[1]).execute(msg, args[2]);
     }
 })
 

@@ -1,4 +1,7 @@
 const {
+    Client,
+    Attachment,
+    Message,
     MessageEmbed
 } = require("discord.js");
 module.exports = {
@@ -47,6 +50,5 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
-
     }
 }

@@ -1,3 +1,7 @@
+/*
+    Author: Damian Dzik
+    Date: 14/12/2021
+*/
 const Discord = require("discord.js")
 const {
     Client,
@@ -34,10 +38,15 @@ client.on("messageCreate", msg => {
     }
 
     if (command === "!recipe") {
-        // commands.get is responsible for getting the correct js file
-        // args[1] is the name of the js file that we are getting from recipes
-        // args[2] is the quantity of recipes to produce 
-        client.recipes.get(args[1]).execute(msg, args[2]);
+        // checking if the args[2] only contains numbers or is empty
+        if (args[2] == null || args[2].toString().match(/^[0-9]+$/) != null) {
+            // commands.get is responsible for getting the correct js file
+            // args[1] is the name of the js file that we are getting from recipes
+            // args[2] is the quantity of recipes to produce 
+            client.recipes.get(args[1]).execute(msg, args[2]);
+        } else if (!args[2].toString().match(/^[0-9]+$/)) { // if args[2] contains numbers so return error message 
+            msg.channel.send("Quantity can only contain numbers. Please try again.")
+        }
     }
 })
 

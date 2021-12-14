@@ -2,15 +2,15 @@
     Author: Damian Dzik
     Date: 14/12/2021
 
-    Image Used from: https: //bddatabase.net/us/recipe/132/
+    Image Used from: https: //bddatabase.net/us/recipe/165/
 */
 const {
     MessageAttachment,
     MessageEmbed
 } = require("discord.js");
-const file = new MessageAttachment('./src/images/milktea.png')
+const file = new MessageAttachment('./src/images/stirfriedmeat.png')
 module.exports = {
-    name: "milktea",
+    name: "stirfriedmeat",
     description: 'Milk Tea recipe, typically used for Imperial Cooking Boxes.',
     execute(msg, args) {
         try {
@@ -23,33 +23,32 @@ module.exports = {
             // thumbnail image from: https://bddatabase.net/us/recipe/132/
             const newEmbed = new MessageEmbed()
                 .setColor('#304281')
-                .setTitle('Milk Tea')
-                .setDescription('Skill level: Skilled 1.')
-                .setThumbnail('attachment://milktea.png')
+                .setTitle('Stir-Fried Meat')
+                .setDescription('Skill level: Apprentice 1')
+                .setThumbnail('https://bddatabase.net/items/new_icon/03_etc/07_productmaterial/00009426.png')
                 .addFields({ // the fields with the names and amount of ingredients
-                    name: 'Milk',
-                    value: (3 * args).toString(),
+                    name: 'Meat',
+                    value: (7 * args).toString(),
                     inline: true
                 }, {
-                    name: 'Honey',
-                    value: (3 * args).toString(),
-                    inline: true
-                }, {
-                    name: 'Flour',
+                    name: 'Base Sauce',
                     value: (2 * args).toString(),
                     inline: true
                 }, {
-                    name: 'Tea With Fine Scent',
+                    name: 'Onion',
                     value: (2 * args).toString(),
+                    inline: true
+                }, {
+                    name: 'Hot Pepper',
+                    value: (3 * args).toString(),
                     inline: true
                 }, {
                     name: '- Crafting Result',
-                    value: 'Milk Tea \n Smooth Milk Tea',
+                    value: 'Stir Fried Meat \n Special Stir-Fried Meat',
                     inline: false
                 }, {
                     name: 'Hint!',
-                    value: '- Can substitute 2 Tea With Fine Scent \n for "1 Tea With Strong Scent"',
-                    inline: false
+                    value: '- Can substitute 2 Onion for \n "1 green grade Onion."'
                 });
             // creates the embed and sends it to the discord channel
             msg.channel.send({

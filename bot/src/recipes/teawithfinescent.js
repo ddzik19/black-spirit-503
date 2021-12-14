@@ -2,15 +2,15 @@
     Author: Damian Dzik
     Date: 14/12/2021
 
-    Image Used from: https: //bddatabase.net/us/recipe/132/
+    Image Used from: https: //bddatabase.net/us/recipe/139/
 */
 const {
     MessageAttachment,
     MessageEmbed
 } = require("discord.js");
-const file = new MessageAttachment('./src/images/milktea.png')
+const file = new MessageAttachment('./src/images/teawithfinescent.png')
 module.exports = {
-    name: "milktea",
+    name: "teawithfinescent",
     description: 'Milk Tea recipe, typically used for Imperial Cooking Boxes.',
     execute(msg, args) {
         try {
@@ -23,34 +23,33 @@ module.exports = {
             // thumbnail image from: https://bddatabase.net/us/recipe/132/
             const newEmbed = new MessageEmbed()
                 .setColor('#304281')
-                .setTitle('Milk Tea')
-                .setDescription('Skill level: Skilled 1.')
-                .setThumbnail('attachment://milktea.png')
+                .setTitle('Tea With Fine Scent ')
+                .setDescription('Skill level: Apprentice 1')
+                .setThumbnail('attachment://teawithfinescent.png')
                 .addFields({ // the fields with the names and amount of ingredients
-                    name: 'Milk',
-                    value: (3 * args).toString(),
+                    name: 'Plants',
+                    value: (4 * args).toString(),
+                    inline: true
+                }, {
+                    name: 'Fruits',
+                    value: (4 * args).toString(),
+                    inline: true
+                }, {
+                    name: 'Mineral Water',
+                    value: (7 * args).toString(),
                     inline: true
                 }, {
                     name: 'Honey',
                     value: (3 * args).toString(),
                     inline: true
                 }, {
-                    name: 'Flour',
-                    value: (2 * args).toString(),
-                    inline: true
-                }, {
-                    name: 'Tea With Fine Scent',
-                    value: (2 * args).toString(),
-                    inline: true
-                }, {
                     name: '- Crafting Result',
-                    value: 'Milk Tea \n Smooth Milk Tea',
-                    inline: false
+                    value: 'Tea With Fine Scent \n Tea With Strong Scent'
                 }, {
                     name: 'Hint!',
-                    value: '- Can substitute 2 Tea With Fine Scent \n for "1 Tea With Strong Scent"',
-                    inline: false
-                });
+                    value: '- Use 1 blue grade "Sunflower" for plant. \n - Buy "Strawberries" from "Milano Belucci"  \n in Calpheon.'
+                })
+
             // creates the embed and sends it to the discord channel
             msg.channel.send({
                 embeds: [newEmbed],

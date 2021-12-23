@@ -8,14 +8,15 @@ const {
     MessageAttachment,
     MessageEmbed
 } = require("discord.js");
-const file = new MessageAttachment('./src/images/teawithfinescent.png')
+// creating a message attachment with the path to the image
+const file = new MessageAttachment('./src/images/foodimages/teawithfinescent.png')
 module.exports = {
     name: "teawithfinescent",
     description: 'Milk Tea recipe, typically used for Imperial Cooking Boxes.',
     execute(msg, args) {
         try {
             // making sure we dont multiply by 0
-            if (args != null) {
+            if (args == null) {
                 // if args is null then assign a value of 1 to it
                 args = 1;
             }
